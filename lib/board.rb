@@ -1,4 +1,5 @@
-
+require_relative 'boardcase'
+require_relative 'show'
 
 class Board
 	attr_accessor :case_arr, :count
@@ -20,22 +21,71 @@ class Board
 		@case_arr = [@A1.value,@A2.value,@A3.value,@B1.value,@B2.value,@B3.value,@C1.value,@C2.value,@C3.value]
 	end
 
-#	def play_turn
-#		@@count += 1
-#
-#		puts "It is the turn of #{fighter.name}, what do you want to do ?"
-#			
-#	end
+	def play_turn(fighters, board)
+		@@count += 1
+		i = rand(0..1)
+		while @count != 9
+			Show.new.grid(board)
 
-	def grid
-		puts "The Grid"
-		puts ""
-		puts "	A	B	C"
-		puts "1       #{@case_arr[0]}   |   #{@case_arr[1]}   |      #{@case_arr[2]}"
-		puts "    --------+-------+--------"
-		puts "2       #{@case_arr[3]}   |   #{@case_arr[4]}   |      #{@case_arr[5]}"
-		puts "    --------+-------+--------"
-		puts "3       #{@case_arr[6]}   |   #{@case_arr[7]}   |      #{@case_arr[8]}"
+			puts "It is the turn of #{fighter.name}, what do you want to do ?"
+			puts "Write letter + number. Exemple : A1"
+			print "> "
+
+				if choice == "A1" && board.case_arr[0] == " "
+          board.case_arr[0] = fighters[i].symbole
+        elsif choice == "A2" && board.case_arr[1] == " "
+          board.case_arr[1] = fighters[i].symbole  
+      	elsif choice == "A3" && board.case_arr[2] == " "
+          board.case_arr[2] = fighters[i].symbole   
+        elsif choice == "B1" && board.case_arr[3] == " "
+          board.case_arr[3] = fighters[i].symbole 
+        elsif choice == "B2" && board.case_arr[4] == " "
+          board.case_arr[4] = fighters[i].symbole
+        elsif choice == "B3" && board.case_arr[5] == " "
+          board.case_arr[5] = fighters[i].symbole
+        elsif choice == "C1" && board.case_arr[6] == " "
+          board.case_arr[6] = fighters[i].symbole
+        elsif choice == "C2" && board.case_arr[7] == " "
+          board.case_arr[7] = fighters[i].symbole
+        elsif choice == "C3" && board.case_arr[8] == " "
+          board.case_arr[8] = fighters[i].symbole 
+        else
+          puts "No no no, not this one, try again ! "
+                i = (i - 1) % 2
+				end
+	
+          if f != board.victory?
+            if board.victory? == fighters[1].symbole || board.victory? == fighters[0].symbole
+              if "O" == fighters[1].symbol
+                puts "The challenger #{fighters[1]} win !"
+               	return
+              elsif "X" == player[0].symbole
+                puts "The challenger #{fighters[0]} win !"
+                return
+              end
+            end
+          else
+           puts "The game end in a draw"
+           return
+          end
+          i = (i + 1) % 2
+        end
+			end
+
+	def victory?(board)
+    if (board.case_arr[0] == board.case_arr[1] && board.case_arr[1] == board.case_arr[2]) 
+      return board.case_board[0]
+    elsif (board.case_arr[3] == board.case_arr[4] && board.case_arr[4] == board.case_arr[5])
+     	return board.case_arr[3]
+    elsif (board.case_arr[6] == board.case_arr[7] && board.case_arr[7] == board.case_arr[8])
+      return board.arr_board[6]
+    elsif (board.case_arr[0] && board.case_arr[4] && board.case_arr[4] == board.case_arr[8])
+      return board.case_arr[1]
+    elsif (board.case_arr[6] == board.case_arr[4] && board.case_arr[4] == board.case_arr[2])
+      return board.case_arr[1]
+    elsif @count_turn == 9 
+      return f
+    end
+
 	end
-
 end
