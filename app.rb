@@ -7,13 +7,13 @@ require 'boardcase'
 require 'board'
 require 'game'
 require 'show'
-
+		#message d'intro
 def intro
     puts "****************************"
     puts "       Hello world !        "
     puts "You wanna play Tic Tac Toe ?"
     puts ""
-    print "Yes or No > "
+    print "Yes or No > "		#je demande a l'utilisateur veux bien jouer
     answ = gets.chomp
     puts ""
     if answ == "Yes"
@@ -26,7 +26,7 @@ def intro
       abort
     end
 end
-
+			#permet de lancer l'application
 class Application
 	def final
 		

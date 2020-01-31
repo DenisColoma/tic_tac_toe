@@ -38,14 +38,16 @@ class Game
 		@continue = true
 	end
 
+		#permet l'alternance de joueurs
 	def turn
 		@board.play_turn(@fighters, @board)
 	end
 
+		#permet de rejouer
 	def new_round
 		@board = Board.new
 	end
-
+		#permet de relancer une partie
 	def end_game
 		puts "Would you like to play again?"
 		print "Yes or No >"

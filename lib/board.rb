@@ -23,14 +23,14 @@ class Board
 
 	def play_turn(fighters, board)
 		@@count += 1
-		i = rand(0..1)
+		i = rand(0..1)			#je lance un random pour choisir qui commencera
 		while @count != 9
 			Show.new.grid(board)
 
 			puts "It is the turn of #{fighters[i].name}, what do you want to do ?"
 			puts "Write letter + number. Exemple : A1"
 			print "> "
-
+							#permet de controler si l case est vide pour pouvoir y jouer et en aps jouer si elle est prise
 				if choice == "A1" && board.case_arr[0] == " "
           board.case_arr[0] = fighters[i].symbole
         elsif choice == "A2" && board.case_arr[1] == " "
@@ -53,7 +53,7 @@ class Board
           puts "No no no, not this one, try again ! "
                 i = (i - 1) % 2
 				end
-	
+							#j'annonce le vainqueur
           if f != board.victory?
             if board.victory? == fighters[1].symbole || board.victory? == fighters[0].symbole
               if "O" == fighters[1].symbol
@@ -71,7 +71,8 @@ class Board
           i = (i + 1) % 2
         end
 			end
-
+	
+				# cas de victoire
 	def victory?(board)
     if (board.case_arr[0] == board.case_arr[1] && board.case_arr[1] == board.case_arr[2]) 
       return board.case_board[0]
