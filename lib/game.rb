@@ -50,9 +50,9 @@ class Game
 		puts "Would you like to play again?"
 		print "Yes or No >"
 		answ_bis = gets.chomp
-		if rep == "Yes"
+		if answ_bis == "Yes"
 			new_round
-		elsif rep == "No"
+		elsif answ_bis == "No"
 			@continue = false
 		end
 	end
