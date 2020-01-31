@@ -27,7 +27,7 @@ class Board
 		while @count != 9
 			Show.new.grid(board)
 
-			puts "It is the turn of #{fighters.name}, what do you want to do ?"
+			puts "It is the turn of #{fighters[i].name}, what do you want to do ?"
 			puts "Write letter + number. Exemple : A1"
 			print "> "
 

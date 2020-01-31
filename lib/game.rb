@@ -21,7 +21,7 @@ class Game
     fighter_2.symbole = "O"
     puts ""
 
-    fighters = [fighter_1, fighter_2]      #je les stocks dans un tableau afin de les appeler à tour de role
+    fighters = [@fighter_1, @fighter_2]      #je les stocks dans un tableau afin de les appeler à tour de role
 
     puts "Okay ! We have a fight between #{fighter_1.name} and #{fighter_2.name}"
     puts ""
