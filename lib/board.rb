@@ -5,7 +5,6 @@ class Board
 	attr_accessor :case_arr, :count
 	attr_reader :error, :win
 
-	@@count = 0
 
 	def initialize
 		@A1 = BoardCase.new("A1")
@@ -19,10 +18,11 @@ class Board
 		@C3 = BoardCase.new("C3")
 
 		@case_arr = [@A1.value, @A2.value, @A3.value, @B1.value, @B2.value, @B3.value, @C1.value, @C2.value, @C3.value]
+		@count = 0
 	end
 
 	def play_turn(fighters, board)
-		@@count += 1
+		system('clear')
 		i = rand(0..1)			#je lance un random pour choisir qui commencera
 		while @count != 9
 			Show.new.grid(board)
@@ -69,6 +69,7 @@ class Board
            puts "The game end in a draw"
            return
           end
+					@count += 1
           i = (i + 1) % 2
         end
 			end
