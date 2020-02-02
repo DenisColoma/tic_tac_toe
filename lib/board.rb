@@ -18,7 +18,7 @@ class Board
 		@C2 = BoardCase.new("C2")
 		@C3 = BoardCase.new("C3")
 
-		@case_arr = [@A1.value,@A2.value,@A3.value,@B1.value,@B2.value,@B3.value,@C1.value,@C2.value,@C3.value]
+		@case_arr = [@A1.value, @A2.value, @A3.value, @B1.value, @B2.value, @B3.value, @C1.value, @C2.value, @C3.value]
 	end
 
 	def play_turn(fighters, board)
@@ -30,37 +30,38 @@ class Board
 			puts "It is the turn of #{fighters[i].name}, what do you want to do ?"
 			puts "Write letter + number. Exemple : A1"
 			print "> "
+			choice = gets.chomp
 							#permet de controler si l case est vide pour pouvoir y jouer et en aps jouer si elle est prise
 				if choice == "A1" && board.case_arr[0] == " "
-          board.case_arr[0] = fighters[i].symbole
+          board.case_arr[0] = fighters[i].symbol
         elsif choice == "A2" && board.case_arr[1] == " "
-          board.case_arr[1] = fighters[i].symbole  
+          board.case_arr[1] = fighters[i].symbol 
       	elsif choice == "A3" && board.case_arr[2] == " "
-          board.case_arr[2] = fighters[i].symbole   
+          board.case_arr[2] = fighters[i].symbol
         elsif choice == "B1" && board.case_arr[3] == " "
-          board.case_arr[3] = fighters[i].symbole 
+          board.case_arr[3] = fighters[i].symbol
         elsif choice == "B2" && board.case_arr[4] == " "
-          board.case_arr[4] = fighters[i].symbole
+          board.case_arr[4] = fighters[i].symbol
         elsif choice == "B3" && board.case_arr[5] == " "
-          board.case_arr[5] = fighters[i].symbole
+          board.case_arr[5] = fighters[i].symbol
         elsif choice == "C1" && board.case_arr[6] == " "
-          board.case_arr[6] = fighters[i].symbole
+          board.case_arr[6] = fighters[i].symbol
         elsif choice == "C2" && board.case_arr[7] == " "
-          board.case_arr[7] = fighters[i].symbole
+          board.case_arr[7] = fighters[i].symbol
         elsif choice == "C3" && board.case_arr[8] == " "
-          board.case_arr[8] = fighters[i].symbole 
+          board.case_arr[8] = fighters[i].symbol
         else
           puts "No no no, not this one, try again ! "
                 i = (i - 1) % 2
 				end
 							#j'annonce le vainqueur
-          if f != board.victory?
-            if board.victory? == fighters[1].symbole || board.victory? == fighters[0].symbole
+          if "f" != victory?(board)
+            if victory?(board) == fighters[1].symbol || victory?(board) == fighters[0].symbol
               if "O" == fighters[1].symbol
-                puts "The challenger #{fighters[1]} win !"
+                puts "The challenger #{fighters[1].name} win !"
                	return
-              elsif "X" == player[0].symbole
-                puts "The challenger #{fighters[0]} win !"
+              elsif "X" == fighters[0].symbol
+                puts "The challenger #{fighters[0].name} win !"
                 return
               end
             end
@@ -75,11 +76,11 @@ class Board
 				# cas de victoire
 	def victory?(board)
     if (board.case_arr[0] == board.case_arr[1] && board.case_arr[1] == board.case_arr[2]) 
-      return board.case_board[0]
+      return board.case_arr[0]
     elsif (board.case_arr[3] == board.case_arr[4] && board.case_arr[4] == board.case_arr[5])
      	return board.case_arr[3]
     elsif (board.case_arr[6] == board.case_arr[7] && board.case_arr[7] == board.case_arr[8])
-      return board.arr_board[6]
+      return board.case_arr[6]
     elsif (board.case_arr[0] && board.case_arr[4] && board.case_arr[4] == board.case_arr[8])
       return board.case_arr[1]
     elsif (board.case_arr[6] == board.case_arr[4] && board.case_arr[4] == board.case_arr[2])

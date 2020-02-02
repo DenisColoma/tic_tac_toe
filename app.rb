@@ -13,14 +13,14 @@ def intro
     puts "       Hello world !        "
     puts "You wanna play Tic Tac Toe ?"
     puts ""
-    print "Yes or No > "		#je demande a l'utilisateur veux bien jouer
+    print "Y or N > "		#je demande a l'utilisateur veux bien jouer
     answ = gets.chomp
     puts ""
-    if answ == "Yes"
+    if answ == "Y"
         puts "       Lets go !!!       "
       puts "****************************"
       puts ""
-    else answ == "No"
+    else answ == "N"
       puts "       Alright, bye"
       puts "****************************"
       abort
